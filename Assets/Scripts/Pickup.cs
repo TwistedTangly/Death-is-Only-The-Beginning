@@ -8,6 +8,7 @@ public class Pickup : MonoBehaviour
     [SerializeField] SpriteRenderer soul;
     [SerializeField] SpriteRenderer glow;
     [SerializeField] ParticleSystem twinkle;
+    [SerializeField] AudioClip chime;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -17,6 +18,7 @@ public class Pickup : MonoBehaviour
             soul.enabled = false;
             glow.enabled = false;
             burst.Play();
+            AudioSource.PlayClipAtPoint(chime, Camera.main.transform.position, 0.5f);
             StartCoroutine(Destroy());
         }
     }
